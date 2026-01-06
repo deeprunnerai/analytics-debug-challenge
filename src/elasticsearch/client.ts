@@ -61,13 +61,8 @@ export class ElasticsearchService {
 
     const took = Date.now() - startTime;
 
-    if (response.errors) {
-      const errorItems = response.items.filter(item => item.index?.error);
-      console.warn(`Bulk indexing completed with ${errorItems.length} errors`);
-    }
-
     return {
-      successful: events.length,
+      successful: response.items.length,
       failed: 0,
       took
     };

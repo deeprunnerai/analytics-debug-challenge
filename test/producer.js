@@ -25,17 +25,12 @@ const eventTypes = [
 
 const sources = ['web', 'mobile-ios', 'mobile-android', 'api'];
 
-function generateUserId() {
-  const rand = Math.random();
-  if (rand < 0.7) {
-    return Math.floor(Math.random() * 1000000);
-  } else if (rand < 0.85) {
-    return `user_${Math.floor(Math.random() * 10000)}`;
-  } else if (rand < 0.95) {
-    return 'anonymous';
-  } else {
-    return 'guest';
+function generateUserId(source) {
+  const id = Math.floor(Math.random() * 1000000);
+  if (source === 'api') {
+    return uuidv4();
   }
+  return id;
 }
 
 function generateEvent() {
@@ -44,7 +39,7 @@ function generateEvent() {
 
   return {
     eventId: uuidv4(),
-    userId: generateUserId(),
+    userId: generateUserId(source),
     sessionId: uuidv4(),
     eventType,
     timestamp: new Date().toISOString(),
