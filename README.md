@@ -77,6 +77,34 @@ The docker-compose includes a test producer that generates sample events:
 docker-compose up event-producer
 ```
 
+### Test Scripts
+
+Additional test scripts are available in `scripts/`:
+
+```bash
+cd scripts && npm install
+
+# Send burst of 1000 events
+npm run burst
+
+# Send smaller burst (100 events)
+npm run burst:small
+
+# Send larger burst (5000 events)
+npm run burst:large
+
+# Check Elasticsearch document count
+npm run verify
+```
+
+### Observed Test Results
+
+When testing with the burst script, we observed the following:
+
+| Events Sent | Events Indexed | Result |
+|-------------|----------------|--------|
+| 1000 | 739 | ~26% missing |
+
 ### Useful Commands
 
 ```bash
