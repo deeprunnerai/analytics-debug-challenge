@@ -6,7 +6,11 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "test:burst": "node scripts/burst-producer.js",
+    "test:burst:small": "BURST_SIZE=100 node scripts/burst-producer.js",
+    "test:burst:large": "BURST_SIZE=5000 node scripts/burst-producer.js",
+    "test:verify": "node scripts/verify-counts.js"
   },
   "dependencies": {
     "@elastic/elasticsearch": "^8.11.0",
