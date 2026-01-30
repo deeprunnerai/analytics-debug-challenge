@@ -8,7 +8,11 @@ async function getElasticsearchCount() {
       res.on('end', () => {
         try {
           const result = JSON.parse(data);
-          resolve(result.count);
+          if (result.error) {
+            resolve(0);
+          } else {
+            resolve(result.count || 0);
+          }
         } catch (e) {
           reject(e);
         }
