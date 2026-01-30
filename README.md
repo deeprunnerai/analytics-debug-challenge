@@ -69,32 +69,22 @@ npm run build
 npm start
 ```
 
-### Generating Test Events
-
-The docker-compose includes a test producer that generates sample events:
-
-```bash
-docker-compose up event-producer
-```
-
 ### Test Scripts
 
-Additional test scripts are available in `scripts/`:
+Test scripts are available to generate events and verify counts:
 
 ```bash
-cd scripts && npm install
-
 # Send burst of 1000 events
-npm run burst
+npm run test:burst
 
 # Send smaller burst (100 events)
-npm run burst:small
+npm run test:burst:small
 
 # Send larger burst (5000 events)
-npm run burst:large
+npm run test:burst:large
 
 # Check Elasticsearch document count
-npm run verify
+npm run test:verify
 ```
 
 ### Observed Test Results
